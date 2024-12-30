@@ -9,38 +9,59 @@ html, body {
     width: 100%;
     overflow-x: hidden;
 }
-
 .header {
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
-    font-family: Sansita;
-    
+    font-family: Open Sans;
 }
-
 .top-bar {
     background-color: #ffeded;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
     display: flex;
-    justify-content:center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    position: relative;
-    height: 50px;
+    padding: 10px 200px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Đường viền dưới */
 }
-.top-bar p{
-    margin: 0;
-    color: red;
-}
-.top-bar-icons{
-    position: absolute;
-    right: 20px;
-}
+.top-bar-left p,
+.top-bar-center p,
 .top-bar-icons a {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.top-bar-center p {
+    text-align: center;
+    color: red;
+    font-weight: 400;
+    flex: 2;
+}
+
+.top-bar-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.top-bar-icons .dropdown {
+    position: relative;
+}
+.top-bar-icons .dropdown a {
+    position: relative;
+    font-weight: lighter;
+} 
+.top-bar-icons div:last-child::before {
+    content: "|"; 
+    margin: 0 10px; 
+    color: #666; 
+}
+.dropdown a{
+    color: #000;
     text-decoration: none;
-    color: black;
-    margin: 0 5px;
+    font-weight: bold;
+    font-family: Open Sans;
 }
 
 .navbar {
@@ -48,22 +69,22 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
-    flex-direction: row;
+    position: relative; /* Để định vị logo */
+    flex-wrap: nowrap !important;
+
 }
 
 .navbar .logo {
     font-size: 54px;
     font-weight: 700;
     font-family: 'Sansita';
-    margin: 0;
-    flex: 1;
+    /* margin-left: 32rem; */
+    /* flex: 1; */
 }
 
 .nav-links-wrapper {
     flex: 0 !important;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex: row !important;
     /* margin-left: 200px; */
 
@@ -74,7 +95,7 @@ html, body {
     list-style: none;
     gap: 20px;
     font-weight: bold;
-    font-family: Sansita;
+    font-family: Open Sans;
     margin: 0;
     padding: 0;
 }
@@ -85,7 +106,7 @@ html, body {
 }
 
 .nav-icons {
-    flex: 2;
+    /* flex: 2; */
     display: flex;
     justify-content: flex-end;
     gap: 20px;
@@ -103,55 +124,29 @@ html, body {
     font-size: 24px;
     cursor: pointer;
 }
-
-.about-us {
-    padding: 20px 50px;
-}
-
-.about-text h2 {
-    font-size: 36px; 
-    font-weight: bold; 
-    color: #000; 
-    margin-bottom: 10px; 
-    font-family: Sansita;
-}
-
-.home-select {
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    font-size: 14px; 
-    color: #666;
-}
-
-.home-select nav {
-    text-decoration: none; 
-    color: #666;
-}
-
-.home-select nav:last-child::before {
-    content: "|"; 
-    margin: 0 10px; 
-    color: #666; 
-}
-
 .contact-us {
     display: flex;
+    flex-direction: column; /* Đặt thành hàng dọc */
+    gap: 40px;
+    /* padding: 30px 50px;  */
+    margin: 0 auto;
 }
 
     .contact-banner {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 20px;
+        gap: 50px;
         background-color: #e5f8fd;
         border-radius: 10px;
-        max-width: 1200px;
-        margin: 0 auto;
+        margin: 10px auto;
 
     }
+    .contact-text{
+        padding: 30px;
+    }
 
-    .contact-banner .contact-text {
+    .contact-banner .wrapper-contact-text {
         padding: 30px;
         border-radius: 10px;
         flex: 1;
@@ -160,7 +155,7 @@ html, body {
     }
 
     .contact-banner .contact-text h2 {
-        font-size: 24px;
+        font-size: 50px;
         font-weight: bold;
         color: #333;
         margin-bottom: 20px;
@@ -170,10 +165,21 @@ html, body {
         background-color: #E76088;
         border: none;
         color: white;
-        padding: 10px 20px;
         border-radius: 5px;
-        font-size: 16px;
         cursor: pointer;
+    }
+    button.btn1.btn-primary.btn-sm {
+        padding: 8px 12px;
+        line-height: 1.2;
+        font-size: 15px;
+        color: #E76088;
+        background-color: rgba(231, 96, 136, 0.15);    
+        margin-bottom: 1rem;
+    }
+    button.btn2.btn-primary.btn-lg{
+        padding: 10px 60px ;
+        line-height: 1.2 ;
+        font-size: 18px ;
     }
 
     .contact-banner .contact-text button:hover {
@@ -209,6 +215,50 @@ html, body {
         cursor: pointer;
     }
 
+.about-us {
+    display: flex;
+    flex-direction: column; /* Đặt tất cả thành phần theo chiều dọc */
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+
+.about-text h2 {
+    font-size: 36px; 
+    font-weight: bold; 
+    color: #000; 
+    margin-bottom: 10px; 
+    font-family: Sansita;
+}
+.about-text {
+    display: flex;
+    flex-direction: column; /* Sắp xếp dọc */
+    align-items: flex-start; /* Căn trái */
+    gap: 10px; /* Khoảng cách giữa tiêu đề và Home Select */
+}
+
+.home-select {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 14px; 
+    color: #666;
+}
+
+.home-select nav {
+    text-decoration: none; 
+    color: #666;
+}
+
+.home-select nav:last-child::before {
+    content: "|"; 
+    margin: 0 10px; 
+    color: #666; 
+}
+
+
 .features {
     text-align: center;
     padding: 50px;
@@ -239,31 +289,25 @@ html, body {
     word-wrap: break-word; 
 }
 
-
 .kids-banner {
-    padding: 50px 20px;
-}
-
-.kids-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
-    max-width: 1200px;
-    margin: 0 auto;
     font-family: Sansita;
 }
 
 .kids-item {
     flex: 1;
-    min-width: 250px; /* Đảm bảo kích thước tối thiểu cho mỗi ảnh */
+    /* min-width: 200px;  */
     max-width: 350px; /* Đặt giới hạn kích thước tối đa */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 .kids-item img {
@@ -322,7 +366,7 @@ html, body {
 
 .team-cards {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap; 
     gap: 30px;
     margin-top: 20px;
@@ -332,9 +376,8 @@ html, body {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 250px; 
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);    text-align: center;
+    width: 22%;
 }
 
 .team-member:hover {
@@ -385,20 +428,19 @@ html, body {
 .feature-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; /* Đảm bảo căn giữa dọc */
     gap: 20px;
-    max-width: 1200px;
     margin: 0 auto;
-    border: 1px solid #e6e6e6; 
-    border-radius: 10px; 
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
     padding: 20px;
-    background-color: #fff; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .feature-item {
     display: flex;
-    align-items: center;
+    align-items: center; /* Căn giữa dọc */
     gap: 15px;
 }
 
@@ -411,7 +453,14 @@ html, body {
     color: #EC80A0;
     border: 1px solid #EC80A0;
     border-radius: 50%;
+    flex-shrink: 0; /* Đảm bảo icon không bị thu nhỏ */
+}
 
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Đảm bảo các dòng text căn giữa */
+    align-items: flex-start; /* Căn bắt đầu ở bên trái */
 }
 
 .feature-text h4 {
@@ -419,12 +468,14 @@ html, body {
     font-weight: bold;
     color: #333;
     margin: 0;
+    line-height: 1.2; /* Đảm bảo khoảng cách giữa các dòng */
 }
 
 .feature-text p {
     font-size: 14px;
     color: #777;
     margin: 5px 0 0 0;
+    line-height: 1.4; /* Khoảng cách hợp lý cho đoạn văn */
 }
 
 .footer {
@@ -433,7 +484,7 @@ html, body {
     padding: 20px;
 }
 
-.subcribe-wrapper{
+.subscribe-wrapper{
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -441,16 +492,16 @@ html, body {
 
 }
 
-.subcribe-wrapper {
+.subscribe-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px; 
+    max-width: 1000px; 
     margin: 0 auto; 
     padding: 20px;
     gap: 20px; 
 }
-.subcribe-wrapper h1{
+.subscribe-wrapper h1{
     font-family: Sansita;
 }
 
@@ -495,7 +546,7 @@ html, body {
 .subscribe button {
     flex: 1; 
     padding: 10px 20px;
-    background-color: #ff5c61;
+    background-color: #EC80A0;
     color: #fff;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -559,7 +610,7 @@ html, body {
 
 .footer-column ul li i {
     margin-right: 10px;
-    color: #ff5c61;
+    color: #000000;
 }
 
 .footer-column ul li a {
@@ -587,6 +638,8 @@ html, body {
     }
     .navbar .logo {
         font-size: 24px;
+        margin: 0 ; 
+        
     }
     .navbar-toggler {
         display: block;
@@ -619,8 +672,6 @@ html, body {
         text-align: center; 
         padding: 5px 0;
     }
-
-
     .navbar-collapse.collapse.show {
         display: flex !important; /* Hiển thị khi toggler được nhấn */
         flex-direction: column;
@@ -631,11 +682,16 @@ html, body {
     .about-us{
         width: 70%;
         margin: 0 auto;
+        
+
     }
     .contact-banner {
         flex-direction: column; 
         align-items: center; 
         gap: 20px;
+    }
+    .contact-banner h2 {
+        font-size: 20px !important;
     }
 
     .contact-text, .contact-video {
@@ -643,27 +699,29 @@ html, body {
         width: 100%; 
         text-align: center;
     }
-    .kids-container {
-        flex-direction: column; 
-        align-items: center; 
+   
+    .kids-banner .kids-item {
+        flex: 0 1 calc(50% - 10px); /* Mỗi item chiếm 50% trừ đi khoảng gap */
+        box-sizing: border-box; 
+        margin-bottom: 10px; /* Loại bỏ margin */
     }
-
-    .kids-item,
-    .kids-text {
+    .kids-item img{
         max-width: 100%;
-        margin-bottom: 20px;
     }
     .features {
         display: none;
     }
-    .subcribe-wrapper {
+    .subscribe-wrapper {
         gap: 20px;
     }
 
-    .subcribe-wrapper {
+    .subscribe-wrapper {
         flex-direction: column; 
         align-items: center;
         gap: 20px;
+    }
+    .subscribe-wrapper h1 {
+        align-items: center;
     }
 
     .subscribe {
@@ -702,6 +760,9 @@ html, body {
     .kids-text .btn {
         font-size: 14px; 
         padding: 8px 16px;
+    }
+    .team-member {
+        width: 100%;
     }
 }
 
